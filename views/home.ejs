@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+
+        <!-- icons -->
+        <script src="https://kit.fontawesome.com/df98e19b56.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body class="flex">
+        <!-- sending data to server -->
+
+        <div class="todo-container">
+            <h1><%= title %></h1>
+
+            <form action="/create-todo" method="POST" class="todoForm flex">
+                <div class="description-box">
+                    <p>DESCRIPTION</p>
+                    <input type="text" id="description" name="description" placeholder="What do you need to do?" required/>
+                </div>
+
+                <div class="category-box">
+                    <p>CATEGORY</p>
+                    <select id="category" name="category" class="cat-date" required>
+                        <option value="chose a category">choose a category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="dueDate-box">
+                    <P>DUE DATE</P>
+                    <input type="date" id="dueDate" name="dueDate" class="cat-date" required/>
+                </div>
+
+                <div class="buttons flex">
+                    <button type="submit" class="addBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        ADD TASK
+                    </button>
+
+                    <button type="submit" class="deleteBtn" formaction="/delete-contact/" >
+                        <i class="fa-solid fa-trash-can"></i>
+                        DELETE TASK
+                    </button>
+                </div>
+
+
+                <!-- Add Task -->
+                <div class="addTasks w100">
+                    <ul action="" class="task flex">
+                        <% for(let i of todo_app) { %>
+                            <li class="flex w100">
+                                <input type="checkbox" id="taskDone" name="checkTask" value="<%= i.category%>" />
+        
+                                <label for="taskDone" class="taskDone flex">
+                                    <span style="font-weight: bold;" class="w100"><%= i.description %></span>
+                                    <p class="w100" style="padding-top: 5px;">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <span><%= i.dueDate %></span>
+                                    </p>
+                                </label>
+                            
+                                <button><%= i.category%></button>
+
+                                <div class="trash-btn">
+                                    <a href="/delete-contact/?id=<%= i._id%>">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+
+            </form>
+
+            
+        </div>
+   
+        <script src="/js/home.js"></script>
+    </body>
+</html>
