@@ -83,6 +83,7 @@ app.post('/create-todo', function(request, respond){
         console.log('******', newTodo);
         return respond.redirect('back');
     });
+
 });
 
 app.get('/delete-contact/', function(request, respond){
@@ -97,7 +98,6 @@ app.get('/delete-contact/', function(request, respond){
 
     //         return respond.redirect('back');
    
-   
     let id = request.query.id;
     Todo.findByIdAndDelete(id, function(err){
         if(err){
@@ -106,6 +106,9 @@ app.get('/delete-contact/', function(request, respond){
         }
         return respond.redirect('back');
     });
+    
+    //    respond.end('<h1>Delete Page</h1>');
+
 });
 
 

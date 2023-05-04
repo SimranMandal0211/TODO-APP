@@ -19,12 +19,12 @@
             <form action="/create-todo" method="POST" class="todoForm flex">
                 <div class="description-box">
                     <p>DESCRIPTION</p>
-                    <input type="text" id="description" name="description" placeholder="What do you need to do?" required/>
+                    <input type="text" id="description" name="description" placeholder="What do you need to do?"/>
                 </div>
 
                 <div class="category-box">
                     <p>CATEGORY</p>
-                    <select id="category" name="category" class="cat-date" required>
+                    <select id="category" name="category" class="cat-date">
                         <option value="chose a category">choose a category</option>
                         <option value="personal">Personal</option>
                         <option value="work">Work</option>
@@ -36,7 +36,7 @@
 
                 <div class="dueDate-box">
                     <P>DUE DATE</P>
-                    <input type="date" id="dueDate" name="dueDate" class="cat-date" required/>
+                    <input type="date" id="dueDate" name="dueDate" class="cat-date" />
                 </div>
 
                 <div class="buttons flex">
@@ -45,7 +45,7 @@
                         ADD TASK
                     </button>
 
-                    <button type="submit" class="deleteBtn" formaction="/delete-contact/" >
+                    <button class="deleteBtn" formaction="/delete-contact/" type="submit">
                         <i class="fa-solid fa-trash-can"></i>
                         DELETE TASK
                     </button>
@@ -57,7 +57,7 @@
                     <ul action="" class="task flex">
                         <% for(let i of todo_app) { %>
                             <li class="flex w100">
-                                <input type="checkbox" id="taskDone" name="checkTask" value="<%= i.category%>" />
+                                <input type="checkbox" id="taskDone" name="checkTask" value="<%= i._id%>" />
         
                                 <label for="taskDone" class="taskDone flex">
                                     <span style="font-weight: bold;" class="w100"><%= i.description %></span>
